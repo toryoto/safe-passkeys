@@ -42,6 +42,7 @@ export async function createPasskey(): Promise<PasskeyArgType> {
 
 // パスキーをローカルストレージに保存
 export function storePasskeyInLocalStorage(passkey: PasskeyArgType) {
+  console.log("storePasskeyInLocalStorage is called")
   const passkeys = loadPasskeysFromLocalStorage()
 
   passkeys.push(passkey)
@@ -51,6 +52,7 @@ export function storePasskeyInLocalStorage(passkey: PasskeyArgType) {
 
 // ローカルストレージからパスキーを取得
 export function loadPasskeysFromLocalStorage(): PasskeyArgType[] {
+  console.log("loadPasskeysFromLocalStorage is called")
   const passkeysStored = localStorage.getItem(STORAGE_PASSKEY_LIST_KEY)
 
   const passkeyIds = passkeysStored ? JSON.parse(passkeysStored) : []
@@ -59,6 +61,7 @@ export function loadPasskeysFromLocalStorage(): PasskeyArgType[] {
 }
 
 export function getPasskeyFromRawId(passkeyRawId: string): PasskeyArgType {
+  console.log("getPasskeyFromRawId is called")
   const passkeys = loadPasskeysFromLocalStorage()
 
   const passkey = passkeys.find((passkey) => passkey.rawId === passkeyRawId)!
